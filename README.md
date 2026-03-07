@@ -116,3 +116,9 @@ Without global install, you can still run:
 ```bash
 node src/index.js
 ```
+
+## Test
+
+```bash
+npm test
+```
