@@ -1,0 +1,20 @@
+{
+  "name": "github-repo-delete-cli",
+  "version": "1.0.0",
+  "description": "Interactive Node.js CLI to delete GitHub repositories",
+  "type": "module",
+  "bin": {
+    "gh-delete-repo": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "node ./src/index.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.0.2",
+    "commander": "^14.0.0",
+    "dotenv": "^16.4.5",
+    "inquirer": "^12.4.2",
+    "ora": "^8.0.1"
+  }
+}
