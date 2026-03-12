@@ -1,15 +1,44 @@
 {
-  "name": "github-repo-delete-cli",
+  "name": "@rabson/gh-repo-cleanup",
   "version": "1.0.0",
-  "description": "Interactive Node.js CLI to delete GitHub repositories",
+  "description": "Interactive CLI to safely delete GitHub repositories",
   "type": "module",
   "bin": {
-    "gh-delete-repo": "./src/index.js"
+    "gh-delete-repo": "src/index.js"
   },
+  "files": [
+    "src"
+  ],
   "scripts": {
     "start": "node ./src/index.js",
     "dev": "node ./src/index.js",
-    "test": "node --test"
+    "test": "node --test",
+    "prepack": "npm test",
+    "release:check": "npm test && npm pack --dry-run"
+  },
+  "keywords": [
+    "github",
+    "cli",
+    "repository",
+    "delete",
+    "automation"
+  ],
+  "author": "Rabson",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rabson/gh-delete-repo-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rabson/gh-delete-repo-cli/issues"
+  },
+  "homepage": "https://github.com/Rabson/gh-delete-repo-cli#readme",
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@octokit/rest": "^21.0.2",

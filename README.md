@@ -16,38 +16,40 @@ Interactive Node.js CLI to delete GitHub repositories safely from the terminal.
 - After each action, returns to list until you choose to exit
 - Delete errors are shown and the app stays open for next actions
 
-## Setup
+## Install
 
-Install dependencies:
+Global install:
 
 ```bash
-npm install
+npm install -g @rabson/gh-repo-cleanup
 ```
 
-Create environment file:
+Run without installing globally:
+
+```bash
+npx @rabson/gh-repo-cleanup --help
+```
+
+## Authentication
+
+Set `GITHUB_TOKEN` in your shell:
+
+```bash
+export GITHUB_TOKEN=your_token_here
+```
+
+Or create a local `.env` file:
 
 ```bash
 cp .env.example .env
 ```
 
-Add your GitHub token:
-
-```bash
-GITHUB_TOKEN=your_token_here
-```
-
-Required token scope:
+Required token scope and permissions:
 
 - `delete_repo`
 - You must have **admin rights** on each target repository
 
-## Run
-
-After `npm link`, use:
-
-```bash
-gh-delete-repo
-```
+## Usage
 
 Interactive mode (all repos accessible by the token):
 
@@ -99,26 +101,52 @@ Dry-run (no deletion, preview only):
 gh-delete-repo --owner your-owner --dry-run
 ```
 
-## Install globally (optional)
+## Local Development
 
 ```bash
-npm link
+npm install
 ```
 
-Then run:
-
-```bash
-gh-delete-repo
-```
-
-Without global install, you can still run:
-
-```bash
-node src/index.js
-```
-
-## Test
+Run tests:
 
 ```bash
 npm test
 ```
+
+Run locally:
+
+```bash
+npm link
+gh-delete-repo --help
+```
+
+## Release (Maintainers)
+
+Create repository secret:
+
+```bash
+NPM_TOKEN=<npm automation token>
+```
+
+Release flow:
+
+1. Bump version and push tag:
+
+```bash
+npm version patch
+git push origin main --follow-tags
+```
+
+2. Create a GitHub Release for the pushed tag.
+3. GitHub Actions `.github/workflows/release.yml` runs tests and publishes to npm.
+
+Manual fallback:
+
+```bash
+npm run release:check
+npm publish
+```
+
+## License
+
+MIT
